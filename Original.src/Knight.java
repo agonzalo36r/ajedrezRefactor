@@ -25,7 +25,7 @@ public class Knight
      */
     public Knight( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
-        this.pieceImage = Renderizer.createQueen(color);
+        this.pieceImage = Renderizer.createKnight(color);
     }
     /**
      * Calculates the moves of the knight in the north direction relative to the

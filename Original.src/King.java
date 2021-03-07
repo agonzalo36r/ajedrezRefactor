@@ -26,6 +26,7 @@ public class King
      */
     public King( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color, false );
+	this.pieceImage = Renderizer.createKing(color);
     }
     /**
      * Calculates the possible moves for this piece. These are ALL the possible
@@ -65,29 +66,5 @@ public class King
      */
     public boolean isChecked( ChessGameBoard board ){
         return getCurrentAttackers( board ).size() > 0;
-    }
-    /**
-     * Creates an icon for this piece depending on the piece's color.
-     *
-     * @return ImageIcon the ImageIcon representation of this piece.
-     */
-    @Override
-    public ImageIcon createImageByPieceType(){
-        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/WhiteKing.gif")
-            );            
-        }
-        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/BlackKing.gif" )
-            );            
-        }
-        else
-        {
-            return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif" )
-            );            
-        }
     }
 }

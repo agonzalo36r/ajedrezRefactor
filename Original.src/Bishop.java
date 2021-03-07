@@ -24,6 +24,7 @@ public class Bishop extends ChessGamePiece{
      */
     public Bishop( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
+        this.pieceImage = Renderizer.createBishop(color);
     }
     /**
      * Calculates the possible moves for this piece. These are ALL the possible
@@ -51,8 +52,8 @@ public class Bishop extends ChessGamePiece{
      * 
      * @return ImageIcon the ImageIcon representation of this piece.
      */
-    @Override
-    public ImageIcon createImageByPieceType(){
+  
+   /* public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
             return new ImageIcon(
                 getClass().getResource("chessImages/WhiteBishop.gif")
@@ -68,5 +69,5 @@ public class Bishop extends ChessGamePiece{
                 getClass().getResource("chessImages/BlackBishop.gif")
             );
         }
-    }
+    }*/
 }

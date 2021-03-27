@@ -24,14 +24,10 @@ public class Knight
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Knight( ChessGameBoard board, int row, int col, int color ){
-        super( board, row, col, color );
-        this.pieceImage = Renderizer.createKnight(color);
-    }
     
     public Knight(final ChessGamePieceBuilder builder) {
         super(builder);
-        this.pieceImage = Renderizer.createPawn(builder.pieceColor);
+        this.pieceImage = Renderizer.createKnight(builder.pieceColor);
     }
     /**
      * Calculates the moves of the knight in the north direction relative to the

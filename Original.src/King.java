@@ -25,14 +25,14 @@ public class King
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public King( ChessGameBoard board, int row, int col, int color ){
+    /*public King( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color, false );
         this.pieceImage = Renderizer.createKing(color);
-    }
+    }*/
     
     public King(final ChessGamePieceBuilder builder) {
         super(builder);
-        this.pieceImage = Renderizer.createQueen(builder.pieceColor);
+        this.pieceImage = Renderizer.createKing(builder.pieceColor);
     }
     /**
      * Calculates the possible moves for this piece. These are ALL the possible

@@ -38,7 +38,7 @@ public abstract class ChessGamePiece{
      * @param pieceColor
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public ChessGamePiece(
+    /*public ChessGamePiece(
         ChessGameBoard board,
         int row,
         int col,
@@ -51,7 +51,7 @@ public abstract class ChessGamePiece{
             board.getCell( row, col ).setPieceOnSquare( this );
         }
         possibleMoves = calculatePossibleMoves( board );
-    }
+    }*/
     // ----------------------------------------------------------
     /**
      * Create a new GamePiece object. This constructor is used for special
@@ -69,7 +69,7 @@ public abstract class ChessGamePiece{
      * @param pieceColor
      *            either GamePiece.BLACK, WHITE, or UNASSIGNED
      */
-    public ChessGamePiece(
+    /*public ChessGamePiece(
         ChessGameBoard board,
         int row,
         int col,
@@ -85,21 +85,13 @@ public abstract class ChessGamePiece{
         if ( !this.skipMoveGeneration ){
             possibleMoves = calculatePossibleMoves( board );
         }
-    }
+    }*/
     
     public ChessGamePiece(final ChessGamePieceBuilder builder) {
         this.pieceRow = builder.pieceRow;
         this.pieceColumn = builder.pieceColumn;
         this.pieceColor = builder.pieceColor;
         this.skipMoveGeneration = builder.skipMoveGeneration;
-        
-        /*if ( board.getCell( row, col ) != null ){
-            board.getCell(row, col).setPieceOnSquare( this );
-        }
-        
-        if ( !this.skipMoveGeneration ){
-            possibleMoves = calculatePossibleMoves( board );
-        }*/
     }
     
     // ----------------------------------------------------------
@@ -770,8 +762,8 @@ public abstract class ChessGamePiece{
     }
     
     public static abstract class ChessGamePieceBuilder{
-    	protected boolean             skipMoveGeneration;
-    	protected int                 pieceColor;
+    	protected boolean           skipMoveGeneration;
+    	protected int               pieceColor;
         protected ImageIcon         pieceImage;
         protected ArrayList<String> possibleMoves;
         protected int               pieceRow;

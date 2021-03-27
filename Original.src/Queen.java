@@ -27,10 +27,6 @@ public class Queen
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Queen( ChessGameBoard board, int row, int col, int color ){
-        super( board, row, col, color );
-        this.pieceImage = Renderizer.createQueen(color);
-    }
     
     public Queen(final ChessGamePieceBuilder builder) {
         super(builder);

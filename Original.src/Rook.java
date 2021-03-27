@@ -25,10 +25,10 @@ public class Rook
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Rook( ChessGameBoard board, int row, int col, int color ){
+    /*public Rook( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
         this.pieceImage = Renderizer.createRook(color);
-    }
+    }*/
 
     public Rook(final ChessGamePieceBuilder builder) {
         super(builder);

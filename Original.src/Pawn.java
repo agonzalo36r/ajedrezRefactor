@@ -26,29 +26,19 @@ public class Pawn
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Pawn( ChessGameBoard board, int row, int col, int color ){
+    /*public Pawn( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color, true );
         this.pieceImage = Renderizer.createPawn(color);
         notMoved = true;
         possibleMoves = calculatePossibleMoves( board );
-    }
+    }*/
     
     public Pawn(final ChessGamePieceBuilder builder) {
         super(builder);
         notMoved = true;
         this.pieceImage = Renderizer.createPawn(builder.pieceColor);
     }
-    /**
-     * Moves this pawn to a row and col
-     *
-     * @param board
-     *            the board to move on
-     * @param row
-     *            the row to move to
-     * @param col
-     *            the col to move to
-     * @return boolean true if the move was successful, false otherwise
-     */
+    
     @Override
     public boolean move( ChessGameBoard board, int row, int col ){
         if ( super.move( board, row, col ) ){
@@ -56,24 +46,13 @@ public class Pawn
             possibleMoves = calculatePossibleMoves( board );
             if ( ( getColorOfPiece() == ChessGamePiece.BLACK && row == 7 )
                 || ( getColorOfPiece() == ChessGamePiece.WHITE && row == 0 ) ){ // pawn has reached the end of the board, promote it to queen
-                board.getCell( row, col ).setPieceOnSquare( new Queen(
-                    board,
-                    row,
-                    col,
-                    getColorOfPiece() ) );
+                board.getCell( row, col ).setPieceOnSquare( ChessGamePieceFactory.CreatePiece2("Queen", board, row, col, getColorOfPiece()));
             }
             return true;
         }
         return false;
     }
-    /**
-     * Calculates the possible moves for this piece. These are ALL the possible
-     * moves, including illegal (but at the same time valid) moves.
-     *
-     * @param board
-     *            the game board to calculate moves on
-     * @return ArrayList<String> the moves
-     */
+    
     @Override
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> moves = new ArrayList<String>();

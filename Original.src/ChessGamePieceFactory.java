@@ -1,24 +1,5 @@
 
 public class ChessGamePieceFactory {
-	public static ChessGamePiece CreatePiece(String pieceID, ChessGameBoard chessgameboard, int row, int column, int pieceColor) {
-		switch(pieceID) {
-			case "King":
-				return new King(chessgameboard, row, column, pieceColor);
-			case "Queen":
-				return new Queen(chessgameboard, row, column, pieceColor);
-			case "Bishop":
-				return new Bishop(chessgameboard, row, column, pieceColor);
-			case "Pawn":
-				return new Pawn(chessgameboard, row, column, pieceColor);
-			case "Knight":
-				return new Knight(chessgameboard, row, column, pieceColor);
-			case "Rook":
-				return new Rook(chessgameboard, row, column, pieceColor);
-			default:
-				// TODO: agregar patron NULL
-				return null;
-		}
-	}
 
 	public static ChessGamePiece CreatePiece2(String pieceID, ChessGameBoard chessgameboard, int row, int column, int pieceColor) {
 		switch(pieceID) {

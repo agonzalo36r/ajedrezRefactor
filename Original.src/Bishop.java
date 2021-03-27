@@ -22,14 +22,14 @@ public class Bishop extends ChessGamePiece{
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Bishop( ChessGameBoard board, int row, int col, int color ){
+    /*public Bishop( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
         this.pieceImage = Renderizer.createBishop(color);
-    }
+    }*/
     
     public Bishop(final ChessGamePieceBuilder builder) {
         super(builder);
-        this.pieceImage = Renderizer.createQueen(builder.pieceColor);
+        this.pieceImage = Renderizer.createBishop(builder.pieceColor);
     }
     /**
      * Calculates the possible moves for this piece. These are ALL the possible

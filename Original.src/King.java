@@ -1,4 +1,5 @@
 import javax.swing.ImageIcon;
+
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
@@ -26,7 +27,12 @@ public class King
      */
     public King( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color, false );
-	this.pieceImage = Renderizer.createKing(color);
+        this.pieceImage = Renderizer.createKing(color);
+    }
+    
+    public King(final ChessGamePieceBuilder builder) {
+        super(builder);
+        this.pieceImage = Renderizer.createQueen(builder.pieceColor);
     }
     /**
      * Calculates the possible moves for this piece. These are ALL the possible
@@ -66,5 +72,14 @@ public class King
      */
     public boolean isChecked( ChessGameBoard board ){
         return getCurrentAttackers( board ).size() > 0;
+    }
+    
+    public static class KingBuilder extends ChessGamePieceBuilder {
+
+		@Override
+		public ChessGamePiece build() {
+			// TODO Auto-generated method stub
+			return new King(this);
+		}
     }
 }

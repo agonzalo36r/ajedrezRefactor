@@ -27,7 +27,12 @@ public class Rook
      */
     public Rook( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
-	this.pieceImage = Renderizer.createRook(color);
+        this.pieceImage = Renderizer.createRook(color);
+    }
+
+    public Rook(final ChessGamePieceBuilder builder) {
+        super(builder);
+        this.pieceImage = Renderizer.createRook(builder.pieceColor);
     }
     /**
      * Calculates the possible moves for this Rook.
@@ -46,5 +51,15 @@ public class Rook
         allMoves.addAll( westMoves );
         allMoves.addAll( eastMoves );
         return allMoves;
+    }
+    
+    public static class RookBuilder extends ChessGamePieceBuilder {
+
+		@Override
+		public ChessGamePiece build() {
+			// TODO Auto-generated method stub
+			return new Rook(this);
+		}
+		
     }
 }

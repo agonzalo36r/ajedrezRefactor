@@ -1,4 +1,5 @@
 import javax.swing.ImageIcon;
+
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
@@ -26,6 +27,11 @@ public class Knight
     public Knight( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
         this.pieceImage = Renderizer.createKnight(color);
+    }
+    
+    public Knight(final ChessGamePieceBuilder builder) {
+        super(builder);
+        this.pieceImage = Renderizer.createPawn(builder.pieceColor);
     }
     /**
      * Calculates the moves of the knight in the north direction relative to the
@@ -90,6 +96,15 @@ public class Knight
             moves.addAll( calculateSouthMoves( board ) );
         }
         return moves;
+    }
+    
+    public static class KnightBuilder extends ChessGamePieceBuilder {
+
+		@Override
+		public ChessGamePiece build() {
+			// TODO Auto-generated method stub
+			return new Knight(this);
+		}
     }
 
 }

@@ -26,6 +26,11 @@ public class Bishop extends ChessGamePiece{
         super( board, row, col, color );
         this.pieceImage = Renderizer.createBishop(color);
     }
+    
+    public Bishop(final ChessGamePieceBuilder builder) {
+        super(builder);
+        this.pieceImage = Renderizer.createQueen(builder.pieceColor);
+    }
     /**
      * Calculates the possible moves for this piece. These are ALL the possible
      * moves, including illegal (but at the same time valid) moves.
@@ -47,27 +52,13 @@ public class Bishop extends ChessGamePiece{
         allMoves.addAll( southWestMoves );
         return allMoves;
     }
-    /**
-     * Creates an icon for this piece depending on the piece's color.
-     * 
-     * @return ImageIcon the ImageIcon representation of this piece.
-     */
-  
-   /* public ImageIcon createImageByPieceType(){
-        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/WhiteBishop.gif")
-            );            
-        }
-        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/BlackBishop.gif")
-            );
-        }
-        else{
-            return new ImageIcon(
-                getClass().getResource("chessImages/BlackBishop.gif")
-            );
-        }
-    }*/
+    
+    public static class BishopBuilder extends ChessGamePieceBuilder {
+
+		@Override
+		public ChessGamePiece build() {
+			// TODO Auto-generated method stub
+			return new Bishop(this);
+		}
+    }
 }

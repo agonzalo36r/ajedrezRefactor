@@ -16,32 +16,15 @@ import javax.swing.ImageIcon;
 public abstract class ChessGamePiece{
     private boolean             skipMoveGeneration;
     private int                 pieceColor;
-    protected ImageIcon           pieceImage;
-    /**
-     * The list of possible moves for this piece. Updated when actions involving
-     * this piece occur. (created, moved, selected, etc)
-     */
+    protected ImageIcon         pieceImage;
     protected ArrayList<String> possibleMoves;
-    /**
-     * The game piece's row.
-     */
     protected int               pieceRow;
-    /**
-     * The game piece's column.
-     */
     protected int               pieceColumn;
-    /**
-     * Represents a black piece as an int
-     */
     static final int            BLACK      = 0;
-    /**
-     * Represents a white piece as an int
-     */
     static final int            WHITE      = 1;
-    /**
-     * Represents a piece that has not been assigned a color
-     */
     static final int            UNASSIGNED = -1;
+    
+    
     // ----------------------------------------------------------
     /**
      * Create a new GamePiece object.
@@ -103,6 +86,22 @@ public abstract class ChessGamePiece{
             possibleMoves = calculatePossibleMoves( board );
         }
     }
+    
+    public ChessGamePiece(final ChessGamePieceBuilder builder) {
+        this.pieceRow = builder.pieceRow;
+        this.pieceColumn = builder.pieceColumn;
+        this.pieceColor = builder.pieceColor;
+        this.skipMoveGeneration = builder.skipMoveGeneration;
+        
+        /*if ( board.getCell( row, col ) != null ){
+            board.getCell(row, col).setPieceOnSquare( this );
+        }
+        
+        if ( !this.skipMoveGeneration ){
+            possibleMoves = calculatePossibleMoves( board );
+        }*/
+    }
+    
     // ----------------------------------------------------------
     /**
      * Generates and returns a list of Strings that represent possible move
@@ -692,7 +691,43 @@ public abstract class ChessGamePiece{
             }
         }
     }
-    // ----------------------------------------------------------
+    public boolean isSkipMoveGeneration() {
+		return skipMoveGeneration;
+	}
+	public void setSkipMoveGeneration(boolean skipMoveGeneration) {
+		this.skipMoveGeneration = skipMoveGeneration;
+	}
+	public int getPieceColor() {
+		return pieceColor;
+	}
+	public void setPieceColor(int pieceColor) {
+		this.pieceColor = pieceColor;
+	}
+	public ImageIcon getPieceImage() {
+		return pieceImage;
+	}
+	public void setPieceImage(ImageIcon pieceImage) {
+		this.pieceImage = pieceImage;
+	}
+	public ArrayList<String> getPossibleMoves() {
+		return possibleMoves;
+	}
+	public void setPossibleMoves(ArrayList<String> possibleMoves) {
+		this.possibleMoves = possibleMoves;
+	}
+	public int getPieceRow() {
+		return pieceRow;
+	}
+	public void setPieceRow(int pieceRow) {
+		this.pieceRow = pieceRow;
+	}
+	public int getPieceColumn() {
+		return pieceColumn;
+	}
+	public void setPieceColumn(int pieceColumn) {
+		this.pieceColumn = pieceColumn;
+	}
+	// ----------------------------------------------------------
     /**
      * Gets a list of GamePieces that can currently attack this game piece.
      *
@@ -712,7 +747,8 @@ public abstract class ChessGamePiece{
                     board.getCell( i, j ).getPieceOnSquare();
                 if ( currPiece != null
                     && currPiece.getColorOfPiece() == enemyColor ){
-                    currPiece.updatePossibleMoves( board );
+     
+                   currPiece.updatePossibleMoves( board );
                     if ( currPiece.canMove( board, pieceRow, pieceColumn ) ){
                         attackers.add( currPiece );
                     }
@@ -731,5 +767,56 @@ public abstract class ChessGamePiece{
     public String toString(){
         return this.getClass().toString().substring( 6 ) + " @ (" + pieceRow
             + ", " + pieceColumn + ")";
+    }
+    
+    public static abstract class ChessGamePieceBuilder{
+    	protected boolean             skipMoveGeneration;
+    	protected int                 pieceColor;
+        protected ImageIcon         pieceImage;
+        protected ArrayList<String> possibleMoves;
+        protected int               pieceRow;
+        protected int               pieceColumn;
+        private ChessGameBoard		chessGameBoard;
+        
+        public ChessGamePieceBuilder() {
+        	skipMoveGeneration = false;
+        }
+        
+        public ChessGamePieceBuilder chessGameBoard(ChessGameBoard chessGameBoard) {
+        	this.chessGameBoard = chessGameBoard;
+        	return this;
+        }
+        
+        public ChessGamePieceBuilder skipMoveGeneration(boolean skipMoveGeneration) {
+        	this.skipMoveGeneration = skipMoveGeneration;
+        	return this;
+        }
+        
+        public ChessGamePieceBuilder pieceColor(int pieceColor) {
+        	this.pieceColor = pieceColor;
+        	return this;
+        }
+        
+        public ChessGamePieceBuilder pieceImage(ImageIcon pieceImage) {
+        	this.pieceImage = pieceImage;
+        	return this;
+        }
+        
+        public ChessGamePieceBuilder possibleMoves(ArrayList<String> possibleMoves) {
+        	this.possibleMoves = possibleMoves;
+        	return this;
+        }
+        
+        public ChessGamePieceBuilder pieceRow(int pieceRow) {
+        	this.pieceRow = pieceRow;
+        	return this;
+        }
+        
+        public ChessGamePieceBuilder pieceColumn(int pieceColumn) {
+        	this.pieceColumn = pieceColumn;
+        	return this;
+        }
+        
+        public abstract ChessGamePiece build();
     }
 }

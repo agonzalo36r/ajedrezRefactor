@@ -28,10 +28,15 @@ public class Pawn
      */
     public Pawn( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color, true );
-        /**Renderiza un icono para esta ficha dependiendo del color*/
         this.pieceImage = Renderizer.createPawn(color);
         notMoved = true;
         possibleMoves = calculatePossibleMoves( board );
+    }
+    
+    public Pawn(final ChessGamePieceBuilder builder) {
+        super(builder);
+        notMoved = true;
+        this.pieceImage = Renderizer.createPawn(builder.pieceColor);
     }
     /**
      * Moves this pawn to a row and col
@@ -118,4 +123,13 @@ public class Pawn
         }
         return moves;
     }   
+    
+    public static class PawnBuilder extends ChessGamePieceBuilder {
+
+		@Override
+		public ChessGamePiece build() {
+			// TODO Auto-generated method stub
+			return new Pawn(this);
+		}
+    }
 }

@@ -1,4 +1,5 @@
 import javax.swing.ImageIcon;
+
 import java.util.ArrayList;
 // import java.awt.Color;
 // -------------------------------------------------------------------------
@@ -15,7 +16,8 @@ public class Queen
     // ----------------------------------------------------------
     /**
      * Create a new Queen object.
-     *
+     * 
+     * 
      * @param board
      *            the board the queen is on
      * @param row
@@ -28,6 +30,11 @@ public class Queen
     public Queen( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
         this.pieceImage = Renderizer.createQueen(color);
+    }
+    
+    public Queen(final ChessGamePieceBuilder builder) {
+        super(builder);
+        this.pieceImage = Renderizer.createQueen(builder.pieceColor);
     }
     /**
      * Calculates the possible moves for this Queen.
@@ -54,5 +61,14 @@ public class Queen
         allMoves.addAll( westMoves );
         allMoves.addAll( eastMoves );
         return allMoves;
+    }
+    
+    public static class QueenBuilder extends ChessGamePieceBuilder {
+
+		@Override
+		public ChessGamePiece build() {
+			// TODO Auto-generated method stub
+			return new Queen(this);
+		}
     }
 }

@@ -737,7 +737,9 @@ public abstract class ChessGamePiece{
     }
     
 	@Override
-	public boolean equals(Object obj) {		
-		return obj instanceof ChessGamePiece;
+	public boolean equals(Object obj) {
+		return this.pieceColor == ((ChessGamePiece) obj).pieceColor && 
+				this.pieceRow == ((ChessGamePiece) obj).pieceRow && 
+				this.pieceColumn == ((ChessGamePiece) obj).pieceColumn;
 	}
 }

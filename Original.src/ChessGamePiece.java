@@ -735,4 +735,9 @@ public abstract class ChessGamePiece{
         return this.getClass().toString().substring( 6 ) + " @ (" + pieceRow
             + ", " + pieceColumn + ")";
     }
+    
+	@Override
+	public boolean equals(Object obj) {		
+		return obj instanceof ChessGamePiece;
+	}
 }

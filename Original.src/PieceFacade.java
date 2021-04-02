@@ -1,5 +1,9 @@
 
 public class PieceFacade {
+	public void PieceFacade() {
+		
+	}
+	
 	public King createKing(ChessGameBoard chessGameBoard, int i, int j, int col) {
 		return new King(chessGameBoard, i, j, col);
 	}

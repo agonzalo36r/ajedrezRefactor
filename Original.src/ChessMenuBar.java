@@ -28,16 +28,16 @@ public class ChessMenuBar
     public ChessMenuBar() {
         components = new ArrayList<iMenuComponent>();
 
-        SubMenu fileMenu = new SubMenu("File");
+        MenuComponent fileMenu = new MenuComponent("File");
 
         fileMenu.add(new NewGameR(this));
         fileMenu.add(new Exit(this));
 
-        SubMenu optionsMenu = new SubMenu("Options");
+        MenuComponent optionsMenu = new MenuComponent("Options");
         optionsMenu.add(new ToggleGraveyard(this));
         optionsMenu.add(new ToogleGameLog(this));
 
-        SubMenu helpMenu = new SubMenu("Help");
+        MenuComponent helpMenu = new MenuComponent("Help");
         helpMenu.add(new About(this));
 
         add(fileMenu);
@@ -63,8 +63,8 @@ public class ChessMenuBar
     }
 
     private void createVisualElements() {
-        for(iMenuComponent menuComponent : getAllComponents()) {
-            SubMenu subMenu = (SubMenu)menuComponent;
+        for(iMenuComponent subMenu : getAllComponents()) {
+        	
             JMenu subMenuPrinter = new JMenu(subMenu.showLabel());
 
             for(iMenuComponent subMenuComponent : subMenu.getAllComponents()) {

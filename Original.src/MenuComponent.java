@@ -1,12 +1,17 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class MenuComponent implements iMenuComponent{
+public class MenuComponent implements iMenuComponent{
     protected String label;
     protected List<iMenuComponent> components;
 
     public MenuComponent() {
         components = new ArrayList<iMenuComponent>();
+    }
+    
+    public MenuComponent(String label) {
+    	this.label = label;
+    	components = new ArrayList<iMenuComponent>();
     }
 
     @Override

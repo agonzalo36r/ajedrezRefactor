@@ -12,7 +12,7 @@ import java.awt.event.MouseEvent;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public class ChessGameEngine{
+public class ChessGameEngine implements IGameEngine{
     private ChessGamePiece currentPiece;
     private boolean        firstClick;
     private int            currentPlayer;
@@ -61,7 +61,7 @@ public class ChessGameEngine{
     /**
      * Switches the turn to be the next player's turn.
      */
-    private void nextTurn(){
+    public void nextTurn(){
         currentPlayer = ( currentPlayer == 1 ) ? 2 : 1;
         ( (ChessPanel)board.getParent() ).getGameLog().addToLog(
                 "It is now Player " + currentPlayer + "'s turn." );

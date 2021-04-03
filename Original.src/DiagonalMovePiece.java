@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public class Bishop extends NewChessGamePiece{
+public class DiagonalMovePiece extends NewChessGamePieceDecorator{
     /**
      * Creates a new Bishop object.
      * 
@@ -21,9 +21,8 @@ public class Bishop extends NewChessGamePiece{
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Bishop( ChessGameBoard board, int row, int col, int color ){
-        super( board, row, col, color );
-        this.pieceImage = Renderizer.createBishop(color);
+    public DiagonalMovePiece( INewChessGamePiece iNewChessGamePiece ){
+        super( iNewChessGamePiece );
     }
     /**
      * Calculates the possible moves for this piece. These are ALL the possible

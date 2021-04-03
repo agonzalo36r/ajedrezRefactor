@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Pawn
-    extends ChessGamePiece{
+    extends NewChessGamePiece{
     private boolean notMoved;
     // ----------------------------------------------------------
     /**
@@ -49,8 +49,8 @@ public class Pawn
         if ( super.move( board, row, col ) ){
             notMoved = false;
             possibleMoves = calculatePossibleMoves( board );
-            if ( ( getColorOfPiece() == ChessGamePiece.BLACK && row == 7 )
-                || ( getColorOfPiece() == ChessGamePiece.WHITE && row == 0 ) ){ // pawn has reached the end of the board, promote it to queen
+            if ( ( getColorOfPiece() == NewChessGamePiece.BLACK && row == 7 )
+                || ( getColorOfPiece() == NewChessGamePiece.WHITE && row == 0 ) ){ // pawn has reached the end of the board, promote it to queen
                 board.getCell( row, col ).setPieceOnSquare( new Queen(
                     board,
                     row,
@@ -70,11 +70,11 @@ public class Pawn
      * @return ArrayList<String> the moves
      */
     @Override
-    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
+    public ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> moves = new ArrayList<String>();
         if ( isPieceOnScreen() ){
             int currRow =
-                getColorOfPiece() == ChessGamePiece.WHITE
+                getColorOfPiece() == NewChessGamePiece.WHITE
                     ? ( pieceRow - 1 )
                     : ( pieceRow + 1 );
             int count = 1;
@@ -92,13 +92,13 @@ public class Pawn
                     break;
                 }
                 currRow =
-                    ( getColorOfPiece() == ChessGamePiece.WHITE )
+                    ( getColorOfPiece() == NewChessGamePiece.WHITE )
                         ? ( currRow - 1 )
                         : ( currRow + 1 );
                 count++;
             }
             // check for enemy capture points
-            if ( getColorOfPiece() == ChessGamePiece.WHITE ){
+            if ( getColorOfPiece() == NewChessGamePiece.WHITE ){
                 if ( isEnemy( board, pieceRow - 1, pieceColumn - 1 ) ){
                     moves.add( ( pieceRow - 1 ) + "," + ( pieceColumn - 1 ) );
                 }

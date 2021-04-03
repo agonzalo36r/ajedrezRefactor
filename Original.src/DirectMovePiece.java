@@ -8,8 +8,8 @@ import java.util.ArrayList;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public class Rook
-    extends NewChessGamePiece{
+public class DirectMovePiece
+    extends NewChessGamePieceDecorator{
     // private ArrayList<String> possibleMoves;
     // ----------------------------------------------------------
     /**
@@ -24,9 +24,8 @@ public class Rook
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Rook( ChessGameBoard board, int row, int col, int color ){
-        super( board, row, col, color );
-	this.pieceImage = Renderizer.createRook(color);
+    public DirectMovePiece( INewChessGamePiece iNewChessGamePiece ){
+        super( iNewChessGamePiece );
     }
     /**
      * Calculates the possible moves for this Rook.
@@ -35,7 +34,7 @@ public class Rook
      */
     @Override
     public ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-        ArrayList<String> northMoves = calculateNorthMoves( board, 8 );
+        ArrayList<String> northMoves = getINewChessGamePiece().calculateNorthMoves( board, 8 );
         ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
         ArrayList<String> westMoves = calculateWestMoves( board, 8 );
         ArrayList<String> eastMoves = calculateEastMoves( board, 8 );

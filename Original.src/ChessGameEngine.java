@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
  * @version 2010.11.17
  */
 public class ChessGameEngine{
-    private ChessGamePiece currentPiece;
+    private NewChessGamePiece currentPiece;
     private boolean        firstClick;
     private int            currentPlayer;
     private ChessGameBoard board;
@@ -83,7 +83,7 @@ public class ChessGameEngine{
      * @return boolean true if the player does have legal moves, false otherwise
      */
     public boolean playerHasLegalMoves( int playerNum ){
-        ArrayList<ChessGamePiece> pieces;
+        ArrayList<NewChessGamePiece> pieces;
         if ( playerNum == 1 ){
             pieces = board.getAllWhitePieces();
         }
@@ -94,7 +94,7 @@ public class ChessGameEngine{
         {
             return false;
         }
-        for ( ChessGamePiece currPiece : pieces ){
+        for ( NewChessGamePiece currPiece : pieces ){
             if ( currPiece.hasLegalMoves( board ) ){
                 return true;
             }
@@ -113,7 +113,7 @@ public class ChessGameEngine{
         }
         if ( currentPlayer == 2 ) // black player
         {
-            if ( currentPiece.getColorOfPiece() == ChessGamePiece.BLACK ){
+            if ( currentPiece.getColorOfPiece() == NewChessGamePiece.BLACK ){
                 return true;
             }
             return false;
@@ -121,7 +121,7 @@ public class ChessGameEngine{
         else
         // white player
         {
-            if ( currentPiece.getColorOfPiece() == ChessGamePiece.WHITE ){
+            if ( currentPiece.getColorOfPiece() == NewChessGamePiece.WHITE ){
                 return true;
             }
             return false;
@@ -243,7 +243,7 @@ public class ChessGameEngine{
      */
     public void determineActionFromSquareClick( MouseEvent e ){
         BoardSquare squareClicked = (BoardSquare)e.getSource();
-        ChessGamePiece pieceOnSquare = squareClicked.getPieceOnSquare();
+        NewChessGamePiece pieceOnSquare = squareClicked.getPieceOnSquare();
         board.clearColorsOnBoard();
         if ( firstClick ){
             currentPiece = squareClicked.getPieceOnSquare();

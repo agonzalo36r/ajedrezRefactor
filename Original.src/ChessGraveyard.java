@@ -31,7 +31,7 @@ public class ChessGraveyard
      * @param piece
      *            the GamePiece to add
      */
-    public void addPiece( ChessGamePiece piece ){
+    public void addPiece( NewChessGamePiece piece ){
         piece.setPieceLocation( -1, -1 );
         JLabel pieceLabel = new JLabel();
         pieceLabel.setIcon( piece.getImage() );

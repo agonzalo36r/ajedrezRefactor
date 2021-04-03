@@ -1,4 +1,3 @@
-import javax.swing.ImageIcon;
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
@@ -10,7 +9,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class King
-    extends ChessGamePiece{
+    extends NewChessGamePiece{
     // ----------------------------------------------------------
     /**
      * Create a new King object.
@@ -37,7 +36,7 @@ public class King
      * @return ArrayList<String> the moves
      */
     @Override
-    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
+    public ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> northEastMoves = calculateNorthEastMoves( board, 1 );
         ArrayList<String> northWestMoves = calculateNorthWestMoves( board, 1 );
         ArrayList<String> southEastMoves = calculateSouthEastMoves( board, 1 );

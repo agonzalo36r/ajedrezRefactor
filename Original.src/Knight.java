@@ -1,4 +1,3 @@
-import javax.swing.ImageIcon;
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
@@ -10,7 +9,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Knight
-    extends ChessGamePiece{
+    extends NewChessGamePiece{
     /**
      * Knight constructor for gamePiece
      *
@@ -83,7 +82,7 @@ public class Knight
      * @return ArrayList<String> the list of possible moves
      */
     @Override
-    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
+    public ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> moves = new ArrayList<String>();
         if ( isPieceOnScreen() ){
             moves.addAll( calculateNorthMoves( board ) );

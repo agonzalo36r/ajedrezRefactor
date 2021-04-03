@@ -73,13 +73,13 @@ public class ChessGameBoard extends JPanel{
      *
      * @return ArrayList<GamePiece> the pieces
      */
-    public ArrayList<ChessGamePiece> getAllWhitePieces(){
-        ArrayList<ChessGamePiece> whitePieces = new ArrayList<ChessGamePiece>();
+    public ArrayList<NewChessGamePiece> getAllWhitePieces(){
+        ArrayList<NewChessGamePiece> whitePieces = new ArrayList<NewChessGamePiece>();
         for ( int i = 0; i < 8; i++ ){
             for ( int j = 0; j < 8; j++ ){
                 if ( chessCells[i][j].getPieceOnSquare() != null
                     && chessCells[i][j].getPieceOnSquare().getColorOfPiece() ==
-                        ChessGamePiece.WHITE ){
+                        NewChessGamePiece.WHITE ){
                     whitePieces.add( chessCells[i][j].getPieceOnSquare() );
                 }
             }
@@ -92,13 +92,13 @@ public class ChessGameBoard extends JPanel{
      *
      * @return ArrayList<GamePiece> the pieces
      */
-    public ArrayList<ChessGamePiece> getAllBlackPieces(){
-        ArrayList<ChessGamePiece> blackPieces = new ArrayList<ChessGamePiece>();
+    public ArrayList<NewChessGamePiece> getAllBlackPieces(){
+        ArrayList<NewChessGamePiece> blackPieces = new ArrayList<NewChessGamePiece>();
         for ( int i = 0; i < 8; i++ ){
             for ( int j = 0; j < 8; j++ ){
                 if ( chessCells[i][j].getPieceOnSquare() != null
                     && chessCells[i][j].getPieceOnSquare().getColorOfPiece() ==
-                        ChessGamePiece.BLACK ){
+                        NewChessGamePiece.BLACK ){
                     blackPieces.add( chessCells[i][j].getPieceOnSquare() );
                 }
             }
@@ -159,21 +159,22 @@ public class ChessGameBoard extends JPanel{
         resetBoard( false );
         for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){
-                ChessGamePiece pieceToAdd;
+                NewChessGamePiece pieceToAdd;
                 if ( i == 1 ) // black pawns
                 {
-                    pieceToAdd = new Pawn( this, i, j, ChessGamePiece.BLACK );
+                    pieceToAdd = new Pawn( this, i, j, NewChessGamePiece.BLACK );
                 }
                 else if ( i == 6 ) // white pawns
                 {
-                    pieceToAdd = new Pawn( this, i, j, ChessGamePiece.WHITE );
+                    pieceToAdd = new Pawn( this, i, j, NewChessGamePiece.WHITE );
                 }
                 else if ( i == 0 || i == 7 ) // main rows
                 {
                     int colNum =
-                        i == 0 ? ChessGamePiece.BLACK : ChessGamePiece.WHITE;
+                        i == 0 ? NewChessGamePiece.BLACK : NewChessGamePiece.WHITE;
                     if ( j == 0 || j == 7 ){
                         pieceToAdd = new Rook( this, i, j, colNum );
+                        //pieceToAdd = new DirectMovePiece( this, i, j, colNum );
                     }
                     else if ( j == 1 || j == 6 ){
                         pieceToAdd = new Knight( this, i, j, colNum );

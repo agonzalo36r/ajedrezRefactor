@@ -2,12 +2,12 @@ import javax.swing.ImageIcon;
 
 public class Renderizer {
 	public static ImageIcon createQueen(int color) {
-		if ( color == ChessGamePiece.WHITE ){
+		if ( color == NewChessGamePiece.WHITE ){
             return new ImageIcon(
                 Renderizer.class.getResource("chessImages/WhiteQueen.gif")
             );            
         }
-        else if ( color == ChessGamePiece.BLACK ){
+        else if ( color == NewChessGamePiece.BLACK ){
             return new ImageIcon(
                 Renderizer.class.getResource("chessImages/BlackQueen.gif")
             );            
@@ -21,12 +21,12 @@ public class Renderizer {
 	}
 	
 	public static ImageIcon createKing(int color) {
-		if ( color == ChessGamePiece.WHITE ){
+		if ( color == NewChessGamePiece.WHITE ){
             return new ImageIcon(
                 Renderizer.class.getResource("chessImages/WhiteKing.gif")
             );            
         }
-        else if ( color == ChessGamePiece.BLACK ){
+        else if ( color == NewChessGamePiece.BLACK ){
             return new ImageIcon(
                 Renderizer.class.getResource("chessImages/BlackKing.gif")
             );            
@@ -40,12 +40,12 @@ public class Renderizer {
 	}
 	
 	public static ImageIcon createPawn(int color) {
-		if ( color == ChessGamePiece.WHITE ){
+		if ( color == NewChessGamePiece.WHITE ){
             return new ImageIcon(
                 Renderizer.class.getResource("chessImages/WhitePawn.gif")
             );            
         }
-        else if ( color == ChessGamePiece.BLACK ){
+        else if ( color == NewChessGamePiece.BLACK ){
             return new ImageIcon(
                 Renderizer.class.getResource("chessImages/BlackPawn.gif")
             );            
@@ -59,12 +59,12 @@ public class Renderizer {
 	}
 	
 	public static ImageIcon createRook(int color) {
-		if ( color == ChessGamePiece.WHITE ){
+		if ( color == NewChessGamePiece.WHITE ){
             return new ImageIcon(
                 Renderizer.class.getResource("chessImages/WhiteRook.gif")
             );            
         }
-        else if ( color == ChessGamePiece.BLACK ){
+        else if ( color == NewChessGamePiece.BLACK ){
             return new ImageIcon(
                 Renderizer.class.getResource("chessImages/BlackRook.gif")
             );            
@@ -78,12 +78,12 @@ public class Renderizer {
 	}
 	
 	public static ImageIcon createKnight(int color) {
-		if ( color == ChessGamePiece.WHITE ){
+		if ( color == NewChessGamePiece.WHITE ){
             return new ImageIcon(
                 Renderizer.class.getResource("chessImages/WhiteKnight.gif")
             );            
         }
-        else if ( color == ChessGamePiece.BLACK ){
+        else if ( color == NewChessGamePiece.BLACK ){
             return new ImageIcon(
                 Renderizer.class.getResource("chessImages/BlackKnight.gif")
             );            
@@ -97,12 +97,12 @@ public class Renderizer {
 	}
 	
 	public static ImageIcon createBishop(int color) {
-		if ( color == ChessGamePiece.WHITE ){
+		if ( color == NewChessGamePiece.WHITE ){
             return new ImageIcon(
                 Renderizer.class.getResource("chessImages/WhiteBishop.gif")
             );            
         }
-        else if ( color == ChessGamePiece.BLACK ){
+        else if ( color == NewChessGamePiece.BLACK ){
             return new ImageIcon(
                 Renderizer.class.getResource("chessImages/BlackBishop.gif")
             );            

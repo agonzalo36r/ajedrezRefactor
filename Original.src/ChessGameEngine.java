@@ -19,6 +19,8 @@ public class ChessGameEngine{
     private ChessGameBoard board;
     private King           king1;
     private King           king2;
+    private States		   estadoActual;
+    private Event		   eventos;
     // ----------------------------------------------------------
     /**
      * Create a new ChessGameEngine object. Accepts a fully-created
@@ -28,6 +30,7 @@ public class ChessGameEngine{
      *            the reference ChessGameBoard
      */
     public ChessGameEngine( ChessGameBoard board ){
+    	estadoActual = States.NEW_GAME;
         firstClick = true;
         currentPlayer = 1;
         this.board = board;
@@ -63,7 +66,7 @@ public class ChessGameEngine{
      */
     private void nextTurn(){
         currentPlayer = ( currentPlayer == 1 ) ? 2 : 1;
-        ( (ChessPanel)board.getParent() ).getGameLog().addToLog(
+        ((ChessPanel)board.getParent() ).getGameLog().addToLog(
                 "It is now Player " + currentPlayer + "'s turn." );
     }
     // ----------------------------------------------------------
@@ -212,6 +215,7 @@ public class ChessGameEngine{
      * @return int 1 or 2 for the losing play, -1 for stalemate, or 0 for a
      *         still valid game.
      */
+    
     public int determineGameLost(){
         if ( king1.isChecked( board ) && !playerHasLegalMoves( 1 ) ) // player 1
         // loss
@@ -232,6 +236,39 @@ public class ChessGameEngine{
         }
         return 0; // game is still in play
     }
+    
+   /////////////////////////////////////////////////////////////////////////////////////////// 
+    public Event determineGameLostWhite(){
+        if ( king1.isChecked( board ) && !playerHasLegalMoves( 1 ) ) // player 1
+        // loss
+        {
+            return Event.CHECKMATE;
+        }
+    
+        if ( ( !king1.isChecked( board ) && !playerHasLegalMoves( 1 ) )
+            || ( board.getAllWhitePieces().size() == 1 &&
+                board.getAllBlackPieces().size() == 1 ) ) // stalemate
+        {
+            return Event.TIE;
+        }
+        return Event.PLAYED; // game is still in play
+    }
+    
+    public Event determineGameLostBlack(){
+        if ( king2.isChecked( board ) && !playerHasLegalMoves( 2 ) ) // player 2
+        // loss
+        {
+        	return Event.CHECKMATE;
+        }
+        if ( ( !king2.isChecked( board ) && !playerHasLegalMoves( 2 ) )
+            || ( board.getAllWhitePieces().size() == 1 &&
+                board.getAllBlackPieces().size() == 1 ) ) // stalemate
+        {
+        	return Event.TIE;
+        }
+        return Event.PLAYED; // game is still in play
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
     // ----------------------------------------------------------
     /**
      * Given a MouseEvent from a user clicking on a square, the appropriate
@@ -309,4 +346,81 @@ public class ChessGameEngine{
             }
         }
     }
+    
+    
+    enum States {
+    	  NEW_GAME,
+    	  WHITE_PLAYING,
+    	  BLACK_PLAYING,
+    	  GAME_OVER	  
+    	}
+    
+    enum Event {
+  	  PLAYED,
+  	  CHECKMATE,
+  	  RESET,
+  	  TIE
+  	}
+    
+    //Cambios de estado
+    public void CambioEstados(States estadoActual, Event eventJuego) {	
+    		if(eventJuego == Event.RESET) {
+    			reset();
+    		}
+    		   	
+	    	switch (estadoActual) {
+		    	case NEW_GAME:
+		    		//Pasa a estado 1 
+		    		if(estadoActual == States.NEW_GAME){
+		    		
+		    		}
+		    		estadoActual = States.WHITE_PLAYING;
+		    		break;
+		    	case WHITE_PLAYING:
+		    		//Pasa a estado 2
+		    		if(eventJuego == Event.PLAYED) {
+		    			//ejecucion
+		    			estadoActual = States.BLACK_PLAYING;
+		    		}
+		    		//Pasa a estado 3
+		    		if(eventJuego == Event.CHECKMATE) {
+		    			//ejecucion
+		    			estadoActual = States.GAME_OVER;
+		    		}
+		    		
+		    		break;
+		    	case BLACK_PLAYING:
+		    		//Pasa a estado 2
+		    		if(eventJuego== Event.PLAYED) {
+		    			//ejecucion
+		    			estadoActual = States.WHITE_PLAYING;
+		    		}
+		    		//Pasa a estado 3
+		    		if(eventJuego== Event.CHECKMATE) {
+		    			//ejecucion
+		    			estadoActual = States.GAME_OVER;
+		    		}
+		    		break;	    		
+
+		    		 
+		    	default:
+	    			//xxx
+	    }
+    }
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -77,6 +77,7 @@ public class ChessMenuBar
         Memento m = ChessMain.caretaker.getLastMemento();
         if(m!=null){
             ( (ChessPanel)this.getParent() ).getGameBoard().restoreFromMemento(m);
+            ( (ChessPanel)this.getParent() ).getGameLog().revertBefore();
         }else{
             JOptionPane.showMessageDialog(
             this.getParent(),

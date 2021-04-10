@@ -61,4 +61,16 @@ public class ChessGameLog
         }
         return textArea.getText().substring( indexOfLastNewLine + 1 );
     }
+
+    public void revertBefore(){
+        String[] lines = textArea.getText().split("\n");
+        StringBuilder finalStringBuilder= new StringBuilder("");
+        for(int i=0;i<lines.length-2;i++){
+            if(!lines[i].equals("")){
+                finalStringBuilder.append(lines[i]).append("\n");
+            }
+        }
+        String finalString = finalStringBuilder.toString();
+        textArea.setText(finalString);
+    }
 }

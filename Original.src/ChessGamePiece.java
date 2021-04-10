@@ -492,7 +492,6 @@ public abstract class ChessGamePiece{
             moveLog += " (" + row + ", " + col + ")";
             ( (ChessPanel)board.getParent() ).getGameLog().addToLog( moveLog );
 
-            //ChessMain.caretaker.addMemento(board.saveToMemento());
             System.out.println("Memento guardado");
             
             board.getCell( row, col ).setPieceOnSquare( this );

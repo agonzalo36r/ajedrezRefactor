@@ -211,11 +211,6 @@ public class ChessGameBoard extends JPanel{
         }
     }
 
-    public Memento saveToMemento(){
-        System.out.println("Guardando memento...");
-        return new Memento(chessCells);
-    }
-
     public void printPieces(){
         for ( int i = 0; i < 8; i++ ){
             for ( int j = 0; j < 8; j++ ){
@@ -227,6 +222,11 @@ public class ChessGameBoard extends JPanel{
         }
     }
 
+    public Memento saveToMemento(){
+        System.out.println("Guardando memento...");
+        return new Memento(chessCells);
+    }
+    
     public void restoreFromMemento(Memento m){
         //chessCells = m.getSavedState();
         System.out.println("Movimiento anterior restaurado");

@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 public abstract class ChessGamePiece{
     private boolean             skipMoveGeneration;
     private int                 pieceColor;
-    private ImageIcon           pieceImage;
+    public ImageIcon           pieceImage;
     /**
      * The list of possible moves for this piece. Updated when actions involving
      * this piece occur. (created, moved, selected, etc)
@@ -469,6 +469,8 @@ public abstract class ChessGamePiece{
     public boolean move( ChessGameBoard board, int row, int col ){
         if ( canMove( board, row, col ) ){
             String moveLog = this.toString() + " -> ";
+            ChessMain.caretaker.addMemento(board.saveToMemento());
+
             board.clearCell( pieceRow, pieceColumn );
             if ( isEnemy( board, row, col ) ){
                 ChessGraveyard graveyard;
@@ -489,10 +491,17 @@ public abstract class ChessGamePiece{
             setPieceLocation( row, col );
             moveLog += " (" + row + ", " + col + ")";
             ( (ChessPanel)board.getParent() ).getGameLog().addToLog( moveLog );
+
+            //ChessMain.caretaker.addMemento(board.saveToMemento());
+            System.out.println("Memento guardado");
+            
             board.getCell( row, col ).setPieceOnSquare( this );
             if ( !skipMoveGeneration ){
                 updatePossibleMoves( board );
             }
+            System.out.println("Tablero luego del movimiento:");
+            board.printPieces();
+            System.out.println("---------------------------------");
             return true;
         }
         else
@@ -587,6 +596,7 @@ public abstract class ChessGamePiece{
     public int getRow(){
         return pieceRow;
     }
+    
     // ----------------------------------------------------------
     /**
      * Returns this piece's column.

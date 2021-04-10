@@ -26,6 +26,10 @@ public class ChessGameBoard extends JPanel{
     public BoardSquare[][] getCells(){
         return chessCells;
     }
+
+    public void setCells(BoardSquare[][] chessCells){
+        this.chessCells = chessCells;
+    }
     /**
      * Checks to make sure row and column are valid indices.
      * @param row the row to check
@@ -206,6 +210,46 @@ public class ChessGameBoard extends JPanel{
             }
         }
     }
+
+    public Memento saveToMemento(){
+        System.out.println("Guardando memento...");
+        return new Memento(chessCells);
+    }
+
+    public void printPieces(){
+        for ( int i = 0; i < 8; i++ ){
+            for ( int j = 0; j < 8; j++ ){
+                if ( chessCells[i][j].getPieceOnSquare() != null ){
+                    System.out.println(chessCells[i][j].getPieceOnSquare().pieceRow + " - "+ 
+                    chessCells[i][j].getPieceOnSquare().pieceColumn + " - " + chessCells[i][j].getPieceOnSquare().toString());
+                }
+            }
+        }
+    }
+
+    public void restoreFromMemento(Memento m){
+        //chessCells = m.getSavedState();
+        System.out.println("Movimiento anterior restaurado");
+        chessCells = m.copy(m.getSavedState());
+        for ( int i = 0; i < 8; i++ ){
+            for ( int j = 0; j < 8; j++ ){
+                ChessGamePiece tempPiece = chessCells[i][j].getPieceOnSquare();
+                if(tempPiece!=null){
+                    tempPiece.updatePossibleMoves(this);
+                    chessCells[i][j].setPieceOnSquare(tempPiece);
+                }else{
+                    chessCells[i][j].clearSquare();
+                }
+                validateCoordinates(i, j);
+            }
+        }
+
+        printPieces();
+        System.out.println("----------------------------");
+
+    }
+
+
     // ----------------------------------------------------------
     /**
      * Clears the colors on the board.

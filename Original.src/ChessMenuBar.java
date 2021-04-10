@@ -19,7 +19,7 @@ public class ChessMenuBar
     public ChessMenuBar(){
         String[] menuCategories = { "File", "Options", "Help" };
         String[] menuItemLists =
-        { "New game/restart,Exit", "Toggle graveyard,Toggle game log",
+        { "New game/restart,Exit", "Toggle graveyard,Toggle game log,Undo",
           "About" };
         for ( int i = 0; i < menuCategories.length; i++ ){
             JMenu currMenu = new JMenu( menuCategories[i] );
@@ -61,6 +61,9 @@ public class ChessMenuBar
             else if ( buttonName.equals( "Toggle game log" ) ){
                 toggleGameLogHandler();
             }
+            else if ( buttonName.equals( "Undo" ) ){
+                undo();
+            }
             else if ( buttonName.equals( "Exit" ) ){
                 exitHandler();
             }
@@ -68,6 +71,16 @@ public class ChessMenuBar
             {
                 toggleGraveyardHandler();
             }
+        }
+    }
+    private void undo(){
+        Memento m = ChessMain.caretaker.getLastMemento();
+        if(m!=null){
+            ( (ChessPanel)this.getParent() ).getGameBoard().restoreFromMemento(m);
+        }else{
+            JOptionPane.showMessageDialog(
+            this.getParent(),
+            "No existen más pasos previos disponibles" );
         }
     }
     // ----------------------------------------------------------

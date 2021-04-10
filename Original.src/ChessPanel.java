@@ -17,6 +17,8 @@ public class ChessPanel
     private ChessGraveyard  playerOneGraveyard;
     private ChessGraveyard  playerTwoGraveyard;
     private ChessGameEngine gameEngine;
+    public static Caretaker caretaker = new Caretaker();
+
     // ----------------------------------------------------------
     /**
      * Create a new ChessPanel object.
@@ -62,6 +64,10 @@ public class ChessPanel
      */
     public ChessGameEngine getGameEngine(){
         return gameEngine;
+    }
+
+    public Caretaker getCaretaker(){
+        return caretaker;
     }
     // ----------------------------------------------------------
     /**

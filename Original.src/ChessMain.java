@@ -16,7 +16,6 @@ public class ChessMain{
      * @param args
      *            command line arguments, not used
      */
-    public static Caretaker caretaker = new Caretaker();
 
 
     public static void main( String[] args ){

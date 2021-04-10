@@ -74,7 +74,7 @@ public class ChessMenuBar
         }
     }
     private void undo(){
-        Memento m = ChessMain.caretaker.getLastMemento();
+        Memento m = ChessPanel.caretaker.getLastMemento();
         if(m!=null){
             ( (ChessPanel)this.getParent() ).getGameBoard().restoreFromMemento(m);
             ( (ChessPanel)this.getParent() ).getGameLog().revertBefore();

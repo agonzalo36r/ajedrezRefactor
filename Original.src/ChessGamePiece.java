@@ -469,7 +469,7 @@ public abstract class ChessGamePiece{
     public boolean move( ChessGameBoard board, int row, int col ){
         if ( canMove( board, row, col ) ){
             String moveLog = this.toString() + " -> ";
-            ChessMain.caretaker.addMemento(board.saveToMemento());
+             ChessPanel.caretaker.addMemento(board.saveToMemento());
 
             board.clearCell( pieceRow, pieceColumn );
             if ( isEnemy( board, row, col ) ){

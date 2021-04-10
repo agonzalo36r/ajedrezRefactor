@@ -13,8 +13,8 @@ public class Caretaker{
 
     public Memento getLastMemento(){
         if(!estados.isEmpty()){
-            Memento estado = estados.get(0);
-            estados.remove(0);
+            Memento estado = estados.get(estados.size()-1);
+            estados.remove(estados.size()-1);
             return estado;
         }else{
             return null;

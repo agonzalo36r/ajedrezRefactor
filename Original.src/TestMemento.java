@@ -30,8 +30,8 @@ public class TestMemento extends TestCase{
         ChessGamePiece testPieza3=chessPanel.getGameBoard().getCell(6, 1).getPieceOnSquare();
         testPieza3.move(chessPanel.getGameBoard(),4, 1);
         
-        Memento m = ChessPanel.caretaker.getLastMemento();
-        Memento m1 = ChessPanel.caretaker.getLastMemento();
+        ChessPanel.caretaker.getLastMemento();
+        ChessPanel.caretaker.getLastMemento();
         Memento m2 = ChessPanel.caretaker.getLastMemento();
         chessPanel.getGameBoard().restoreFromMemento(m2);
 

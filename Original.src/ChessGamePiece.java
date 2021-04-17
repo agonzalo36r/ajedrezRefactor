@@ -469,6 +469,8 @@ public abstract class ChessGamePiece{
     public boolean move( ChessGameBoard board, int row, int col ){
         if ( canMove( board, row, col ) ){
             String moveLog = this.toString() + " -> ";
+            MoveDTO move = new MoveDTO(this.toString(), this.getColumn(), col, this.getRow(), row);
+            ( (ChessPanel)board.getParent() ).getMoveService().agregarMovimiento(move);
             board.clearCell( pieceRow, pieceColumn );
             if ( isEnemy( board, row, col ) ){
                 ChessGraveyard graveyard;

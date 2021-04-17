@@ -14,6 +14,7 @@ import java.util.Date;
 public class ChessGameLog
     extends JScrollPane{
     private JTextArea textArea;
+    LogStrategy logStrategy;
     // ----------------------------------------------------------
     /**
      * Create a new ChessGameLog object.
@@ -41,7 +42,20 @@ public class ChessGameLog
         {
             textArea.setText( new Date() + " - " + s );
         }
+
     }
+
+    
+    public void addToLogUsingStrategy(String s){
+        logStrategy.processLog(s, textArea);
+    }
+    /**
+     * Sets the Strategy
+     */
+
+    public void setStrategy(LogStrategy logStrategy){
+        this.logStrategy = logStrategy;
+    }    
     /**
      * Clears the log.
      */

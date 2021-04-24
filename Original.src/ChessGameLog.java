@@ -12,7 +12,7 @@ import java.util.Date;
  * @version 2010.11.17
  */
 public class ChessGameLog
-    extends JScrollPane{
+    extends JScrollPane implements IGameLog{
     private JTextArea textArea;
     // ----------------------------------------------------------
     /**

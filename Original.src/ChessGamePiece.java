@@ -17,6 +17,7 @@ public abstract class ChessGamePiece{
     private boolean             skipMoveGeneration;
     private int                 pieceColor;
     protected ImageIcon           pieceImage;
+    private IGameLog iGameLog;
     /**
      * The list of possible moves for this piece. Updated when actions involving
      * this piece occur. (created, moved, selected, etc)
@@ -59,7 +60,9 @@ public abstract class ChessGamePiece{
         ChessGameBoard board,
         int row,
         int col,
-        int pieceColor ){
+        int pieceColor,
+        IGameLog iGameLog){
+        this.iGameLog = iGameLog;
         skipMoveGeneration = false;
         this.pieceColor = pieceColor;
         pieceRow = row;

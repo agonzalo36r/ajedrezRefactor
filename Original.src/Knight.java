@@ -24,7 +24,7 @@ public class Knight
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
     public Knight( ChessGameBoard board, int row, int col, int color ){
-        super( board, row, col, color );
+        super( board, row, col, color, new ChessGameLogProxy() );
         this.pieceImage = Renderizer.createKnight(color);
     }
     /**
